@@ -36,6 +36,13 @@ texture = ExtResource("1_nw5gq")
 [node name="Player" parent="." unique_id=1811052657 instance=ExtResource("1_eeg7j")]
 position = Vector2(-354, 0)
 
+[node name="Boss" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
+position = Vector2(2, -6)
+
+[node name="StaticBody2D" parent="." unique_id=2060166809 instance=ExtResource("6_gscdv")]
+position = Vector2(32, -66)
+scale = Vector2(0.455, 0.455)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1797831618 node_paths=PackedStringArray("target")]
 limit_enabled = false
 limit_left = -1656
@@ -59,10 +66,3 @@ script = ExtResource("3_20tfy")
 
 [node name="Marker2D" type="Marker2D" parent="Camera2D" unique_id=1163781252]
 position = Vector2(-861.445, -425)
-
-[node name="Boss" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
-position = Vector2(2, -6)
-
-[node name="StaticBody2D" parent="." unique_id=2060166809 instance=ExtResource("6_gscdv")]
-position = Vector2(32, -66)
-scale = Vector2(0.455, 0.455)

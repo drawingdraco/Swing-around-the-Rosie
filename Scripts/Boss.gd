@@ -2,7 +2,8 @@ extends Area2D
 var projectsc = preload("res://Scenes/seed.tscn")
 var homprojectsc = preload("res://Scenes/HomingSeed.tscn")
 var vinewave = preload("res://Scenes/Vinewabe.tscn")
-@onready var main = get_node("/root/Garden")
+var rootssc = preload("res://Scenes/roots.tscn")
+@onready var main = get_node("/root/Garden/Boss")
 # Called when the node enters the scene tree for the first time.
 @export var progress: float = 0.0
 func _ready() -> void:
@@ -23,17 +24,36 @@ func _on_timer_timeout() -> void:
 	projectile.position = global_position
 	progress += .01
 	$"/root/Garden/Boss/Path2D/PathFollow2D".progress_ratio = progress
-	main.add_child(projectile)
+	main.add_sibling(projectile)
 
 
 func _on_timer_2_timeout() -> void:
 	var homprojectile = homprojectsc.instantiate()
 	homprojectile.position = global_position
-	main.add_child(homprojectile)
+	main.add_sibling(homprojectile)
 
 
 func _on_timer_3_timeout() -> void:
 	var wave = vinewave.instantiate()
 	wave.position = global_position
 	wave.position.y -= 620
-	main.add_child(wave)
+	main.add_sibling(wave)
+
+
+func _on_timer_4_timeout() -> void:
+	var roots = rootssc.instantiate()
+	var rand = randi_range(1,4)
+	if rand == 1:
+		roots.position = global_position
+		
+	elif rand == 2:
+		roots.position = global_position
+		roots.position.y += 430
+	elif rand == 3:
+		roots.position = global_position
+		roots.position.x += 860
+	elif rand == 4:
+		roots.position = global_position
+		roots.position.y += 430
+		roots.position.x += 860
+	main.add_sibling(roots)
