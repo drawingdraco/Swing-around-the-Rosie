@@ -3,7 +3,8 @@ var projectsc = preload("res://Scenes/seed.tscn")
 var homprojectsc = preload("res://Scenes/HomingSeed.tscn")
 var vinewave = preload("res://Scenes/Vinewabe.tscn")
 var rootssc = preload("res://Scenes/roots.tscn")
-@onready var main = get_node("/root/Garden/Boss")
+var puffsc = preload("res://Scenes/Pollen puff.tscn")
+@onready var main = get_node("/root/Garden/Sprite2D")
 # Called when the node enters the scene tree for the first time.
 @export var progress: float = 0.0
 func _ready() -> void:
@@ -17,7 +18,19 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	Global.health -= 10
-
+	
+func _on_attack_timeout() -> void:
+	var rand = randi_range(1,4)
+	print(rand)
+	if rand == 1:
+		$Timer.start()
+		$Timer/Length.start()
+	elif rand == 2:
+		$Timer2.start()
+	elif rand == 3:
+		$Timer3.start()
+	elif rand == 4:
+		$Timer4.start()
 
 func _on_timer_timeout() -> void:
 	var projectile = projectsc.instantiate()
@@ -45,7 +58,6 @@ func _on_timer_4_timeout() -> void:
 	var rand = randi_range(1,4)
 	if rand == 1:
 		roots.position = global_position
-		
 	elif rand == 2:
 		roots.position = global_position
 		roots.position.y += 430
@@ -57,3 +69,13 @@ func _on_timer_4_timeout() -> void:
 		roots.position.y += 430
 		roots.position.x += 860
 	main.add_sibling(roots)
+
+
+func _on_timer_5_timeout() -> void:
+	var puff = puffsc.instantiate()
+	puff.position = global_position
+	main.add_sibling(puff)
+
+
+func _on_length_timeout() -> void:
+	$Timer.stop()

@@ -11,3 +11,7 @@ func _process(delta: float) -> void:
 	#moves straight down towards the player
 	velocity = Vector2(0,1) * 600
 	move_and_slide()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

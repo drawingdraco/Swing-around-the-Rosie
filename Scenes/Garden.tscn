@@ -33,15 +33,15 @@ position = Vector2(-8, 5.999999)
 scale = Vector2(4.5405984, 4.169872)
 texture = ExtResource("1_nw5gq")
 
-[node name="Player" parent="." unique_id=1811052657 instance=ExtResource("1_eeg7j")]
-position = Vector2(-354, 0)
-
 [node name="Boss" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
 position = Vector2(2, -6)
 
 [node name="StaticBody2D" parent="." unique_id=2060166809 instance=ExtResource("6_gscdv")]
 position = Vector2(32, -66)
 scale = Vector2(0.455, 0.455)
+
+[node name="Player" parent="." unique_id=1811052657 instance=ExtResource("1_eeg7j")]
+position = Vector2(-354, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1797831618 node_paths=PackedStringArray("target")]
 limit_enabled = false

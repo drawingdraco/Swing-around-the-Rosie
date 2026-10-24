@@ -33,16 +33,28 @@ sprite_frames = SubResource("SpriteFrames_4ocjq")
 script = ExtResource("2_wwfse")
 progress = 23.305
 
+[node name="Timer2" type="Timer" parent="Area2D" unique_id=611403535]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="Area2D" unique_id=513925323]
+wait_time = 0.007
+
+[node name="Length" type="Timer" parent="Area2D/Timer" unique_id=1051750372]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer3" type="Timer" parent="Area2D" unique_id=1024539638]
+one_shot = true
+
+[node name="Timer4" type="Timer" parent="Area2D" unique_id=750797454]
+one_shot = true
+
+[node name="Timer5" type="Timer" parent="Area2D" unique_id=1382381386]
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=70676996]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_lett3")
-
-[node name="Timer2" type="Timer" parent="." unique_id=611403535]
-autostart = true
-
-[node name="Timer" type="Timer" parent="." unique_id=513925323]
-wait_time = 0.007
-autostart = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=787765958]
 
@@ -56,14 +68,15 @@ curve = SubResource("Curve2D_wwfse")
 position = Vector2(125.76, 0)
 rotation = 1.5659564
 
-[node name="Timer3" type="Timer" parent="." unique_id=1024539638]
-autostart = true
-
-[node name="Timer4" type="Timer" parent="." unique_id=750797454]
+[node name="attack" type="Timer" parent="." unique_id=1249362346]
+wait_time = 3.0
 autostart = true
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="timeout" from="Timer2" to="Area2D" method="_on_timer_2_timeout"]
-[connection signal="timeout" from="Timer" to="Area2D" method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer3" to="Area2D" method="_on_timer_3_timeout"]
-[connection signal="timeout" from="Timer4" to="Area2D" method="_on_timer_4_timeout"]
+[connection signal="timeout" from="Area2D/Timer2" to="Area2D" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Area2D/Timer/Length" to="Area2D" method="_on_length_timeout"]
+[connection signal="timeout" from="Area2D/Timer3" to="Area2D" method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Area2D/Timer4" to="Area2D" method="_on_timer_4_timeout"]
+[connection signal="timeout" from="Area2D/Timer5" to="Area2D" method="_on_timer_5_timeout"]
+[connection signal="timeout" from="attack" to="Area2D" method="_on_attack_timeout"]
