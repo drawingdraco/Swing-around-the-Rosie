@@ -2,7 +2,27 @@
 
 [ext_resource type="PackedScene" uid="uid://cexj3riqalggj" path="res://Scenes/Player.tscn" id="1_eeg7j"]
 [ext_resource type="PackedScene" uid="uid://bhv26i5djpx58" path="res://Scenes/boss.tscn" id="3_5qaag"]
+[ext_resource type="Script" uid="uid://bqb2i44pp2pkb" path="res://Scenes/Healthbar.gd" id="3_20tfy"]
 [ext_resource type="Script" uid="uid://brllkaswxacfy" path="res://Scripts/camera_2d.gd" id="3_wa1tm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lett3"]
+
+[sub_resource type="Curve" id="Curve_gtvoi"]
+_data = [Vector2(0.20555556, 0.79775286), 0.0, 0.0, 0, 0, Vector2(0.6166667, 1), 0.0, 0.0, 0, 0, Vector2(0.9944445, 0.078651786), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_bx1cq"]
+_data = [Vector2(0.44444445, 0.77528095), 0.0, 0.0, 0, 0, Vector2(0.76111114, 0.17977536), 0.0, 0.0, 0, 0, Vector2(1, 0.17977536), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_v7vlv"]
+_data = [Vector2(0.23888889, 0.13483155), 0.0, 0.0, 0, 0, Vector2(0.44444445, 0.5393259), 0.0, 0.0, 0, 0, Vector2(0.6888889, 0.94382024), 0.0, 0.0, 0, 0, Vector2(1, 0.92134833), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4ocjq"]
+curve_x = SubResource("Curve_gtvoi")
+curve_y = SubResource("Curve_bx1cq")
+curve_z = SubResource("Curve_v7vlv")
 
 [node name="Node" type="Node" unique_id=629953605]
 
@@ -13,5 +33,16 @@ position = Vector2(-354, 0)
 script = ExtResource("3_wa1tm")
 target = NodePath("../CharacterBody2D")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D" unique_id=326762683]
+offset_left = -404.0
+offset_top = 271.0
+offset_right = 406.0
+offset_bottom = 311.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("PlaceholderTexture2D_lett3")
+texture_progress = SubResource("CurveXYZTexture_4ocjq")
+script = ExtResource("3_20tfy")
+
 [node name="AnimatedSprite2D2" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
-position = Vector2(0, 1)
+position = Vector2(-1, 0)
