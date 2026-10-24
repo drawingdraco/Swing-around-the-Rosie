@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bw5k8fptbns23"]
 
 [ext_resource type="PackedScene" uid="uid://cexj3riqalggj" path="res://Scenes/Player.tscn" id="1_eeg7j"]
-[ext_resource type="Texture2D" uid="uid://bi3m1vjrtdhhk" path="res://7crdm5z7w5z31.png" id="1_nw5gq"]
+[ext_resource type="Texture2D" uid="uid://dcyai2fyegehv" path="res://back.svg" id="1_nw5gq"]
+[ext_resource type="Texture2D" uid="uid://3imhwwbcqbns" path="res://arena.svg" id="2_gscdv"]
 [ext_resource type="PackedScene" uid="uid://bhv26i5djpx58" path="res://Scenes/boss.tscn" id="3_5qaag"]
 [ext_resource type="Script" uid="uid://bqb2i44pp2pkb" path="res://Scripts/Healthbar.gd" id="3_20tfy"]
 [ext_resource type="Script" uid="uid://brllkaswxacfy" path="res://Scripts/camera_2d.gd" id="3_wa1tm"]
@@ -29,9 +30,14 @@ curve_z = SubResource("Curve_o3d2i")
 [node name="Garden" type="Node" unique_id=629953605]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=806061326]
-position = Vector2(-8, 5.999999)
-scale = Vector2(4.5405984, 4.169872)
+position = Vector2(72.99989, 50)
+scale = Vector2(1.9218751, 2.0833335)
 texture = ExtResource("1_nw5gq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=833757191]
+position = Vector2(-0.4999752, 1.9999428)
+scale = Vector2(1.3390625, 1.7796296)
+texture = ExtResource("2_gscdv")
 
 [node name="Boss" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
 position = Vector2(2, -6)

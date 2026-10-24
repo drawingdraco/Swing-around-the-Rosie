@@ -17,27 +17,24 @@ func _process(delta):
 		$Area2D.monitorable = true
 		mouseangle = get_angle_to(get_global_mouse_position())
 		print(mouseangle)
-		if(!(abs(rad_to_deg(mouseangle))>=60)):
-			if rad_to_deg(mouseangle)<0:
-				mouseangle = deg_to_rad(60) * -1
-			else: 
-				mouseangle = deg_to_rad(60)
+		if abs(rad_to_deg(mouseangle)) < 60:
+			mouseangle = deg_to_rad(60) * (-1 if mouseangle < 0 else 1)
 		swung = true
 		$Timer.start()
 		
 		
-	if (swung and counter < 6):
+	if (swung and counter < 16):
 		counter += 1
-		rotate(mouseangle/6) 
-		#my_signal.emit()
-	if(counter == 6):
+		rotate(mouseangle / 16)
+		if counter >=8:
+			my_signal.emit()
+	if(counter >= 16):
 		$Timer.stop()
-		$Timer.timeout.emit() 	
+		$Timer.timeout.emit()
 
 
 
 func _on_timer_timeout() -> void:
 	swung = false
 	counter=0
-	my_signal.emit()
 	$Area2D.monitorable = false

@@ -58,4 +58,5 @@ func _on_rotation_point_my_signal() -> void:
 	var direction_to_pivot = (pivot_global_position - global_position).normalized()
 	velocity = direction_to_pivot * SPEED
 	velocity *= 6
+	velocity/=16
 	dodge_roll(direction_to_pivot)

@@ -8,7 +8,7 @@ var shot = false
 func _physics_process(delta):
 	if (not shot):
 		direction = (player.position - position)
-		
+		look_at(player.position)
 	direction = direction.normalized()
 	velocity = direction * speed
 	move_and_slide()

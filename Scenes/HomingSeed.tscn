@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkc4rt05tafng"]
 
 [ext_resource type="Script" uid="uid://cpg7hluuq7og6" path="res://Scripts/HomingSeed.gd" id="1_ov48o"]
-[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="2_tpaqo"]
+[ext_resource type="Texture2D" uid="uid://dbwrim8to53y7" path="res://HomSeed.svg" id="2_ov48o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
 size = Vector2(44, 20)
@@ -10,8 +10,9 @@ size = Vector2(44, 20)
 script = ExtResource("1_ov48o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=280536386]
-scale = Vector2(0.3515625, 0.17382813)
-texture = ExtResource("2_tpaqo")
+position = Vector2(-2.3841858e-07, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ov48o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868063012]
 shape = SubResource("RectangleShape2D_lett3")

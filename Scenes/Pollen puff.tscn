@@ -1,25 +1,31 @@
 [gd_scene format=3 uid="uid://eobt35ptyiyx"]
 
-[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_24gqt"]
 [ext_resource type="Script" uid="uid://ts5acqp0j734" path="res://Scripts/pollen_puff.gd" id="1_djkty"]
+[ext_resource type="Texture2D" uid="uid://cem8eufcm5y28" path="res://pollen.svg" id="2_djkty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ocjq"]
 radius = 169.95587
 
 [node name="Area2D2" type="Area2D" unique_id=1805149045]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_djkty")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1599246221]
-position = Vector2(4, 3.500002)
-scale = Vector2(2.7031248, 2.6484375)
-texture = ExtResource("1_24gqt")
+position = Vector2(0.49999714, -1.5000105)
+scale = Vector2(3.2476192, 3.1904762)
+texture = ExtResource("2_djkty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050799232]
 shape = SubResource("CircleShape2D_4ocjq")
 
 [node name="Timer" type="Timer" parent="." unique_id=799243834]
-wait_time = 0.5
 one_shot = true
 autostart = true
 
+[node name="Timer2" type="Timer" parent="." unique_id=1231123454]
+wait_time = 0.25
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

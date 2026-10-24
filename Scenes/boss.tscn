@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bhv26i5djpx58"]
 
-[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_0154r"]
+[ext_resource type="Texture2D" uid="uid://ccodru2stjc2" path="res://flower.svg" id="1_wwfse"]
 [ext_resource type="Script" uid="uid://dj2oydp5yewh" path="res://Scripts/Boss.gd" id="2_wwfse"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4ocjq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_djkty"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_0154r")
+"texture": ExtResource("1_wwfse")
 }],
 "loop": 1,
 "name": &"default",
@@ -15,19 +15,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
-size = Vector2(131, 129)
+size = Vector2(98.7, 81.90001)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lett3"]
-radius = 67.0
+radius = 50.419437
 
 [sub_resource type="Curve2D" id="Curve2D_wwfse"]
 _data = {
-"points": PackedVector2Array(-0.6154022, -127.15047, 0.6154022, 127.15047, 125.76, 0, 0, 0, -129.44, 0, 0, 125.66, 0, 0, 0, -130, -125.175, 0, 0, 0, 141.07, 0, 0, -125.015, 0, 0, 0, 0, 124.7, 0)
+"points": PackedVector2Array(0.58190084, 1.5596313, -0.58190084, -1.5596313, 124.86318, 0.32248878, 131.23596, 1.7959547, -131.23596, -1.7959547, 0, 125.66, 0.81777406, 4.880539, -0.81777406, -4.880539, -125.175, 0, -122.08844, 1.5045004, 122.08844, -1.5045004, 6.2746463, -126.943275, 0, 0, 0, 0, 124.7, 0)
 }
 point_count = 5
 
 [node name="Boss" type="AnimatedSprite2D" unique_id=339361115]
-sprite_frames = SubResource("SpriteFrames_4ocjq")
+position = Vector2(1.9073486e-06, 0)
+scale = Vector2(2.183523, 2.25)
+sprite_frames = SubResource("SpriteFrames_djkty")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1821702401]
 script = ExtResource("2_wwfse")
@@ -53,7 +55,7 @@ one_shot = true
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=70676996]
-position = Vector2(-0.5, -1.5)
+position = Vector2(0.35000154, 3.1500003)
 shape = SubResource("RectangleShape2D_lett3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=787765958]
@@ -62,11 +64,13 @@ shape = SubResource("RectangleShape2D_lett3")
 shape = SubResource("CircleShape2D_lett3")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1332192538]
+position = Vector2(-4.555641, 4.6658583)
+scale = Vector2(0.7260398, 0.72603977)
 curve = SubResource("Curve2D_wwfse")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=503338555]
-position = Vector2(125.76, 0)
-rotation = 1.5659564
+position = Vector2(124.86318, 0.32248878)
+rotation = -1.927902
 
 [node name="attack" type="Timer" parent="." unique_id=1249362346]
 wait_time = 3.0

@@ -4,7 +4,7 @@ var homprojectsc = preload("res://Scenes/HomingSeed.tscn")
 var vinewave = preload("res://Scenes/Vinewabe.tscn")
 var rootssc = preload("res://Scenes/roots.tscn")
 var puffsc = preload("res://Scenes/Pollen puff.tscn")
-@onready var main = get_node("/root/Garden/Sprite2D")
+@onready var main = get_node("/root/Garden/Sprite2D2")
 # Called when the node enters the scene tree for the first time.
 @export var progress: float = 0.0
 func _ready() -> void:
@@ -20,7 +20,7 @@ func _on_area_entered(area: Area2D) -> void:
 	Global.health -= 10
 	
 func _on_attack_timeout() -> void:
-	var rand = randi_range(1,4)
+	var rand = randi_range(1,5)
 	print(rand)
 	if rand == 1:
 		$Timer.start()
@@ -31,7 +31,8 @@ func _on_attack_timeout() -> void:
 		$Timer3.start()
 	elif rand == 4:
 		$Timer4.start()
-
+	elif rand == 5:
+		$Timer5.start()
 func _on_timer_timeout() -> void:
 	var projectile = projectsc.instantiate()
 	projectile.position = global_position

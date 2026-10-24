@@ -11,5 +11,10 @@ func _process(delta: float) -> void:
 	pass
 
 
+
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_timer_2_timeout() -> void:
+	$Sprite2D.modulate.a/=2

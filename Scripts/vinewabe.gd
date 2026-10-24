@@ -9,7 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#moves straight down towards the player
-	velocity = Vector2(0,1) * 600
+	velocity = Vector2(0,1) * 400
 	move_and_slide()
 
 

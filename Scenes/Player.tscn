@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://cexj3riqalggj"]
 
 [ext_resource type="Script" uid="uid://c1641e8s6i1mv" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://dgnmdlbi1p0h5" path="res://Player.svg" id="2_5ixxa"]
 [ext_resource type="Script" uid="uid://bj1nhihbepir8" path="res://Scripts/scythe.gd" id="3_gntrk"]
 [ext_resource type="Script" uid="uid://bob83wfb3lvdh" path="res://Scripts/timer.gd" id="4_dewec"]
+[ext_resource type="Texture2D" uid="uid://b4raiumnwvngi" path="res://Scythe.svg" id="5_5ixxa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ocjq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rpqav")
+"texture": ExtResource("2_5ixxa")
 }],
 "loop": 1,
 "name": &"default",
@@ -17,23 +18,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
+size = Vector2(22, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
-size = Vector2(125, 121.58975)
+size = Vector2(22.5, 559.6667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtvoi"]
-size = Vector2(50, 54)
+size = Vector2(23, 38)
 
 [node name="Player" type="CharacterBody2D" unique_id=1811052657]
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2114506581]
-position = Vector2(1.0000002, -1.9999995)
-scale = Vector2(0.40624997, 0.42968747)
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(1.2105261, 1.2803643)
 sprite_frames = SubResource("SpriteFrames_4ocjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657703935]
-position = Vector2(1, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_lett3")
 
 [node name="rotation point" type="Node2D" parent="." unique_id=682767236]
@@ -41,13 +43,14 @@ scale = Vector2(1, 0.15234375)
 script = ExtResource("3_gntrk")
 
 [node name="Timer" type="Timer" parent="rotation point" unique_id=1199623820]
-wait_time = 0.5
+wait_time = 834.953
 one_shot = true
 script = ExtResource("4_dewec")
 
 [node name="Scythe" type="Sprite2D" parent="rotation point" unique_id=1399232087]
-position = Vector2(92, 6.5641026)
-texture = ExtResource("1_rpqav")
+position = Vector2(78, 269.1282)
+scale = Vector2(1.8934426, 12.202545)
+texture = ExtResource("5_5ixxa")
 
 [node name="playerpivot" type="Node2D" parent="rotation point" unique_id=764137705]
 position = Vector2(156, 0)
@@ -57,14 +60,14 @@ scale = Vector2(1, 6.5641026)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rotation point/Area2D" unique_id=1072092124]
-position = Vector2(92.5, 4.846157)
+position = Vector2(122, 275.69232)
 shape = SubResource("RectangleShape2D_4ocjq")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1394241135]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1201093142]
-position = Vector2(1, -1)
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_gtvoi")
 
 [connection signal="my_signal" from="rotation point" to="." method="_on_rotation_point_my_signal"]
