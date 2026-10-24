@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bw5k8fptbns23"]
+
+[ext_resource type="PackedScene" uid="uid://cexj3riqalggj" path="res://Scenes/Player.tscn" id="1_eeg7j"]
+[ext_resource type="PackedScene" uid="uid://bhv26i5djpx58" path="res://Scenes/boss.tscn" id="3_5qaag"]
+[ext_resource type="Script" uid="uid://brllkaswxacfy" path="res://Scripts/camera_2d.gd" id="3_wa1tm"]
+
+[node name="Node" type="Node" unique_id=629953605]
+
+[node name="CharacterBody2D" parent="." unique_id=1811052657 instance=ExtResource("1_eeg7j")]
+position = Vector2(-354, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1797831618 node_paths=PackedStringArray("target")]
+script = ExtResource("3_wa1tm")
+target = NodePath("../CharacterBody2D")
+
+[node name="AnimatedSprite2D2" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
+position = Vector2(0, 1)

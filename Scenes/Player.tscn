@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cexj3riqalggj"]
+
+[ext_resource type="Script" uid="uid://c1641e8s6i1mv" path="res://Scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://bj1nhihbepir8" path="res://Scripts/scythe.gd" id="3_gntrk"]
+[ext_resource type="Script" uid="uid://bob83wfb3lvdh" path="res://Scripts/timer.gd" id="4_dewec"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ocjq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rpqav")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
+size = Vector2(125, 121.58975)
+
+[node name="Player" type="CharacterBody2D" unique_id=1811052657]
+script = ExtResource("1_kyqiw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2114506581]
+position = Vector2(1.0000002, -1.9999995)
+scale = Vector2(0.40624997, 0.42968747)
+sprite_frames = SubResource("SpriteFrames_4ocjq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657703935]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_lett3")
+
+[node name="rotation point" type="Node2D" parent="." unique_id=682767236]
+scale = Vector2(1, 0.15234375)
+script = ExtResource("3_gntrk")
+
+[node name="Timer" type="Timer" parent="rotation point" unique_id=1199623820]
+wait_time = 0.5
+one_shot = true
+script = ExtResource("4_dewec")
+
+[node name="Scythe" type="Sprite2D" parent="rotation point" unique_id=1399232087]
+position = Vector2(92, 6.5641026)
+texture = ExtResource("1_rpqav")
+
+[node name="playerpivot" type="Node2D" parent="rotation point" unique_id=764137705]
+position = Vector2(156, 0)
+scale = Vector2(1, 6.5641026)
+
+[node name="Area2D" type="Area2D" parent="rotation point" unique_id=167674590]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotation point/Area2D" unique_id=1072092124]
+position = Vector2(92.5, 4.846157)
+shape = SubResource("RectangleShape2D_4ocjq")
+
+[connection signal="my_signal" from="rotation point" to="." method="_on_rotation_point_my_signal"]
+[connection signal="timeout" from="rotation point/Timer" to="rotation point" method="_on_timer_timeout"]
