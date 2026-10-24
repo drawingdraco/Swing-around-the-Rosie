@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cxy41jnl7hvw1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gru6s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx6fm"]
+size = Vector2(4043, 927)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmi0g"]
+size = Vector2(929.5, 4354)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=2060166809]
+collision_mask = 14
+physics_material_override = SubResource("PhysicsMaterial_gru6s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=177192143]
+position = Vector2(-79, 1587)
+shape = SubResource("RectangleShape2D_jx6fm")
+
+[node name="Ylowmark" type="Marker2D" parent="CollisionShape2D" unique_id=1045044415]
+position = Vector2(-66, -463)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2020136746]
+position = Vector2(-87, -1271)
+shape = SubResource("RectangleShape2D_jx6fm")
+one_way_collision_margin = 0.1
+
+[node name="Yhighmark" type="Marker2D" parent="CollisionShape2D2" unique_id=378141716]
+position = Vector2(-54, 463)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=292196159]
+position = Vector2(-2409, 114)
+shape = SubResource("RectangleShape2D_kmi0g")
+
+[node name="XLmark" type="Marker2D" parent="CollisionShape2D3" unique_id=557811832]
+position = Vector2(464.25, -175.5)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=55479923]
+position = Vector2(2233, 135)
+shape = SubResource("RectangleShape2D_kmi0g")
+
+[node name="XRmark" type="Marker2D" parent="CollisionShape2D4" unique_id=34868749]
+position = Vector2(-464, -167)

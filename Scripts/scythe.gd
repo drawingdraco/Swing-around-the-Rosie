@@ -13,13 +13,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed('swing') and !swung):
+		Global.startpos = $playerpivot.position
 		$Area2D.monitorable = true
 		mouseangle = get_angle_to(get_global_mouse_position())
-		if(!(abs(rad_to_deg(mouseangle))>=120)):
+		print(mouseangle)
+		if(!(abs(rad_to_deg(mouseangle))>=60)):
 			if rad_to_deg(mouseangle)<0:
-				mouseangle = deg_to_rad(120) * -1
+				mouseangle = deg_to_rad(60) * -1
 			else: 
-				mouseangle = deg_to_rad(120)
+				mouseangle = deg_to_rad(60)
 		swung = true
 		$Timer.start()
 		
@@ -27,11 +29,11 @@ func _process(delta):
 	if (swung and counter < 6):
 		counter += 1
 		rotate(mouseangle/6) 
-		my_signal.emit()
+		#my_signal.emit()
 	if(counter == 6):
 		$Timer.stop()
-		$Timer.timeout.emit() 
-		
+		$Timer.timeout.emit() 	
+
 
 
 func _on_timer_timeout() -> void:

@@ -21,6 +21,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
 size = Vector2(125, 121.58975)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtvoi"]
+size = Vector2(50, 54)
+
 [node name="Player" type="CharacterBody2D" unique_id=1811052657]
 script = ExtResource("1_kyqiw")
 
@@ -56,6 +59,13 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rotation point/Area2D" unique_id=1072092124]
 position = Vector2(92.5, 4.846157)
 shape = SubResource("RectangleShape2D_4ocjq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1394241135]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1201093142]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_gtvoi")
 
 [connection signal="my_signal" from="rotation point" to="." method="_on_rotation_point_my_signal"]
 [connection signal="timeout" from="rotation point/Timer" to="rotation point" method="_on_timer_timeout"]

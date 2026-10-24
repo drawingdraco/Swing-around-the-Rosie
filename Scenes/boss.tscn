@@ -17,14 +17,49 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
 size = Vector2(131, 129)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lett3"]
+radius = 67.0
+
+[sub_resource type="Curve2D" id="Curve2D_wwfse"]
+_data = {
+"points": PackedVector2Array(-0.6154022, -127.15047, 0.6154022, 127.15047, 125.76, 0, 0, 0, -129.44, 0, 0, 125.66, 0, 0, 0, -130, -125.175, 0, 0, 0, 141.07, 0, 0, -125.015, 0, 0, 0, 0, 124.7, 0)
+}
+point_count = 5
+
 [node name="Boss" type="AnimatedSprite2D" unique_id=339361115]
 sprite_frames = SubResource("SpriteFrames_4ocjq")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1821702401]
 script = ExtResource("2_wwfse")
+progress = 23.305
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=70676996]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_lett3")
 
+[node name="Timer2" type="Timer" parent="." unique_id=611403535]
+autostart = true
+
+[node name="Timer" type="Timer" parent="." unique_id=513925323]
+wait_time = 0.007
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=787765958]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1080875978]
+shape = SubResource("CircleShape2D_lett3")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1332192538]
+curve = SubResource("Curve2D_wwfse")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=503338555]
+position = Vector2(125.76, 0)
+rotation = 1.5659564
+
+[node name="Timer3" type="Timer" parent="." unique_id=1024539638]
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="timeout" from="Timer2" to="Area2D" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer" to="Area2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="Area2D" method="_on_timer_3_timeout"]

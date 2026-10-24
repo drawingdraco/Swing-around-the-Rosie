@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bey8608lkmkf8"]
+
+[ext_resource type="Script" uid="uid://dqxmlqk2xr0ae" path="res://Scripts/seed.gd" id="1_arhpd"]
+[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_h627t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
+size = Vector2(44, 20)
+
+[node name="Seed" type="CharacterBody2D" unique_id=1004721893]
+script = ExtResource("1_arhpd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=280536386]
+scale = Vector2(0.3515625, 0.17382813)
+texture = ExtResource("1_h627t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1868063012]
+shape = SubResource("RectangleShape2D_lett3")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=700916633]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=121368141]
+shape = SubResource("RectangleShape2D_lett3")
+
+[node name="Timer" type="Timer" parent="." unique_id=958279497]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,48 +1,68 @@
 [gd_scene format=3 uid="uid://bw5k8fptbns23"]
 
 [ext_resource type="PackedScene" uid="uid://cexj3riqalggj" path="res://Scenes/Player.tscn" id="1_eeg7j"]
+[ext_resource type="Texture2D" uid="uid://bi3m1vjrtdhhk" path="res://7crdm5z7w5z31.png" id="1_nw5gq"]
 [ext_resource type="PackedScene" uid="uid://bhv26i5djpx58" path="res://Scenes/boss.tscn" id="3_5qaag"]
 [ext_resource type="Script" uid="uid://bqb2i44pp2pkb" path="res://Scripts/Healthbar.gd" id="3_20tfy"]
 [ext_resource type="Script" uid="uid://brllkaswxacfy" path="res://Scripts/camera_2d.gd" id="3_wa1tm"]
+[ext_resource type="PackedScene" uid="uid://cxy41jnl7hvw1" path="res://Scenes/static_body_2d.tscn" id="6_gscdv"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lett3"]
 
-[sub_resource type="Curve" id="Curve_gtvoi"]
+[sub_resource type="Curve" id="Curve_nw5gq"]
 _data = [Vector2(0.20555556, 0.79775286), 0.0, 0.0, 0, 0, Vector2(0.6166667, 1), 0.0, 0.0, 0, 0, Vector2(0.9944445, 0.078651786), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_bx1cq"]
+[sub_resource type="Curve" id="Curve_gscdv"]
 _data = [Vector2(0.44444445, 0.77528095), 0.0, 0.0, 0, 0, Vector2(0.76111114, 0.17977536), 0.0, 0.0, 0, 0, Vector2(1, 0.17977536), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_v7vlv"]
+[sub_resource type="Curve" id="Curve_o3d2i"]
 _data = [Vector2(0.23888889, 0.13483155), 0.0, 0.0, 0, 0, Vector2(0.44444445, 0.5393259), 0.0, 0.0, 0, 0, Vector2(0.6888889, 0.94382024), 0.0, 0.0, 0, 0, Vector2(1, 0.92134833), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4ocjq"]
-curve_x = SubResource("Curve_gtvoi")
-curve_y = SubResource("Curve_bx1cq")
-curve_z = SubResource("Curve_v7vlv")
+curve_x = SubResource("Curve_nw5gq")
+curve_y = SubResource("Curve_gscdv")
+curve_z = SubResource("Curve_o3d2i")
 
-[node name="Node" type="Node" unique_id=629953605]
+[node name="Garden" type="Node" unique_id=629953605]
 
-[node name="CharacterBody2D" parent="." unique_id=1811052657 instance=ExtResource("1_eeg7j")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=806061326]
+position = Vector2(-8, 5.999999)
+scale = Vector2(4.5405984, 4.169872)
+texture = ExtResource("1_nw5gq")
+
+[node name="Player" parent="." unique_id=1811052657 instance=ExtResource("1_eeg7j")]
 position = Vector2(-354, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1797831618 node_paths=PackedStringArray("target")]
+limit_enabled = false
+limit_left = -1656
+limit_top = -806
+limit_right = 1205
+limit_bottom = 769
 script = ExtResource("3_wa1tm")
-target = NodePath("../CharacterBody2D")
+target = NodePath("../Player")
+speed = 2.09
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D" unique_id=326762683]
-offset_left = -404.0
-offset_top = 271.0
-offset_right = 406.0
-offset_bottom = 311.0
+offset_left = -399.0
+offset_top = 266.0
+offset_right = 411.0
+offset_bottom = 318.0
 value = 100.0
 nine_patch_stretch = true
 texture_under = SubResource("PlaceholderTexture2D_lett3")
 texture_progress = SubResource("CurveXYZTexture_4ocjq")
 script = ExtResource("3_20tfy")
 
-[node name="AnimatedSprite2D2" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
-position = Vector2(-1, 0)
+[node name="Marker2D" type="Marker2D" parent="Camera2D" unique_id=1163781252]
+position = Vector2(-861.445, -425)
+
+[node name="Boss" parent="." unique_id=339361115 instance=ExtResource("3_5qaag")]
+position = Vector2(2, -6)
+
+[node name="StaticBody2D" parent="." unique_id=2060166809 instance=ExtResource("6_gscdv")]
+position = Vector2(32, -66)
+scale = Vector2(0.455, 0.455)

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bra1jog0i5ufh"]
+
+[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_1ynsb"]
+[ext_resource type="Script" uid="uid://g6xfogrymir1" path="res://Scripts/vinewabe.gd" id="1_goqr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
+size = Vector2(1586, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
+size = Vector2(1590, 59)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=223426841]
+script = ExtResource("1_goqr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2075283175]
+scale = Vector2(13.179686, 0.4765625)
+texture = ExtResource("1_1ynsb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=820435279]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=985560777]
+shape = SubResource("RectangleShape2D_lett3")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=349218473]
+shape = SubResource("RectangleShape2D_4ocjq")
+disabled = true

@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 600.0
 enum Dir { Right, Left, Down, Up }
 var direction = Dir.Down
 var screen_size # Size of the game window.
 var mousepos = Vector2(0,0)
-const DODGE_SPEED: float = 600.0
+const DODGE_SPEED: float = 900.0
 const DODGE_DURATION: float = 0.3
 
 var dodge_roll_dir: Vector2 = Vector2.ZERO
@@ -53,24 +53,9 @@ func _dodge_logic(delta: float) -> void:
 	if dodge_roll_timer <= 0.0:
 		dodge_roll_dir = Vector2.ZERO
 func _on_rotation_point_my_signal() -> void:
-	mousepos = get_local_mouse_position()
-	velocity = Vector2(0,0)
-	if mousepos.x < 0:
-		velocity.x -= 1
-	elif mousepos.x > 0:
-		velocity.x += 1
-	else:
-		velocity.x =0
-	if mousepos.y < 0:
-		velocity.y -= 1
-	elif mousepos.y > 0:
-		velocity.y += 1
-	else:
-		velocity.y =0
-	velocity = velocity.normalized() * SPEED
-	if(abs(mousepos.x)>abs(mousepos.y)):
-		velocity.x *= 6
-	elif(abs(mousepos.y)>abs(mousepos.x)):
-		velocity.y *= 6
-	dodge_roll(velocity.normalized())
-	
+	#moves the player in a dash twoards the node playerpivot
+	var pivot_global_position = $"rotation point/playerpivot".global_position
+	var direction_to_pivot = (pivot_global_position - global_position).normalized()
+	velocity = direction_to_pivot * SPEED
+	velocity *= 6
+	dodge_roll(direction_to_pivot)
