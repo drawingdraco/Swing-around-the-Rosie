@@ -17,14 +17,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
-size = Vector2(22, 39)
+[sub_resource type="CircleShape2D" id="CircleShape2D_16vyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
 size = Vector2(29.25, 588.3462)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtvoi"]
-size = Vector2(29, 45)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnmk7"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1811052657]
 script = ExtResource("1_kyqiw")
@@ -35,15 +33,15 @@ scale = Vector2(1.2105261, 1.2803643)
 sprite_frames = SubResource("SpriteFrames_4ocjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657703935]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_lett3")
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_16vyi")
 
 [node name="rotation point" type="Node2D" parent="." unique_id=682767236]
 scale = Vector2(1, 0.15234375)
 script = ExtResource("3_gntrk")
 
 [node name="Invincibility" type="Timer" parent="rotation point" unique_id=1860079762]
-wait_time = 0.5
+wait_time = 0.75
 one_shot = true
 
 [node name="Timer" type="Timer" parent="rotation point" unique_id=1199623820]
@@ -77,8 +75,8 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1201093142]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_gtvoi")
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_bnmk7")
 
 [node name="Hit" type="Timer" parent="." unique_id=1191523020]
 

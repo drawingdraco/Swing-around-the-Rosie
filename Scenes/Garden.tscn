@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cuh35xpmiik3v" path="res://bar.svg" id="7_0205m"]
 [ext_resource type="Texture2D" uid="uid://0qbo60qnpkdc" path="res://healthbar.svg" id="9_ytob4"]
 [ext_resource type="Script" uid="uid://4gafh123w1f8" path="res://Scenes/rich_text_label.gd" id="10_ytob4"]
+[ext_resource type="Texture2D" uid="uid://c8pljj0hvitly" path="res://warning.svg" id="11_ve2dw"]
 
 [node name="Garden" type="Node" unique_id=629953605]
 
@@ -66,6 +67,15 @@ offset_left = -576.0
 offset_top = -323.0
 offset_right = -146.0
 offset_bottom = -234.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 31
 theme_override_font_sizes/normal_font_size = 57
 text = "health :"
 script = ExtResource("10_ytob4")
+
+[node name="Warning" type="Sprite2D" parent="Camera2D" unique_id=21762361]
+visible = false
+position = Vector2(140, -264)
+scale = Vector2(2.3999999, 2.4)
+texture = ExtResource("11_ve2dw")

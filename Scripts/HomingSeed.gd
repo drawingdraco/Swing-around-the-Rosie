@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed : int = 500
+var speed : int = 400
 var direction : Vector2
 var shot = false
 @onready var main = get_node("/root/Garden")
