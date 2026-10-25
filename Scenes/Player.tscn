@@ -43,6 +43,7 @@ scale = Vector2(1, 0.15234375)
 script = ExtResource("3_gntrk")
 
 [node name="Invincibility" type="Timer" parent="rotation point" unique_id=1860079762]
+wait_time = 0.5
 one_shot = true
 
 [node name="Timer" type="Timer" parent="rotation point" unique_id=1199623820]
