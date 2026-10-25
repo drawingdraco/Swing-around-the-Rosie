@@ -1,28 +1,52 @@
 [gd_scene format=3 uid="uid://raajclyl0rt4"]
 
 [ext_resource type="Script" uid="uid://ovqo5ft4nxpe" path="res://Scripts/roots.gd" id="1_aa2mp"]
-[ext_resource type="Texture2D" uid="uid://ivktuok6qkgs" path="res://icon.svg" id="1_hgvse"]
+[ext_resource type="Texture2D" uid="uid://djcyy4oerlxad" path="res://thorns.svg" id="2_aa2mp"]
+[ext_resource type="Texture2D" uid="uid://d1ksqdnnve73u" path="res://thornbud.svg" id="2_q1ldr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lett3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q1ldr")
+}],
+"loop": 1,
+"name": &"bud",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aa2mp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
 size = Vector2(852, 429)
 
 [node name="Area2D" type="Area2D" unique_id=634275517]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_aa2mp")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8636552]
-position = Vector2(-428.5, -218)
-scale = Vector2(6.7265625, 3.328125)
-texture = ExtResource("1_hgvse")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465974254]
+position = Vector2(-423, -188)
+scale = Vector2(1.99, 2.1145375)
+sprite_frames = SubResource("SpriteFrames_lett3")
+animation = &"bud"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=43490566]
 position = Vector2(-426, -216.5)
 shape = SubResource("RectangleShape2D_lett3")
 
 [node name="Timer" type="Timer" parent="." unique_id=1264679986]
-wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="." unique_id=388327456]
 one_shot = true
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

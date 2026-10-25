@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://blt6j6x2wh7ud"]
+
+[ext_resource type="Texture2D" uid="uid://cg6bv8carctvp" path="res://loose.svg" id="1_n03xj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lett3"]
+font_size = 387
+
+[node name="Label" type="Label" unique_id=689044643]
+offset_left = 18.0
+offset_top = -3.0
+offset_right = 1169.0
+offset_bottom = 525.0
+text = "loose"
+label_settings = SubResource("LabelSettings_lett3")
+
+[node name="Loose" type="Sprite2D" parent="." unique_id=1053856002]
+position = Vector2(556, 323.5)
+scale = Vector2(1.0104166, 1.0262346)
+texture = ExtResource("1_n03xj")

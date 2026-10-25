@@ -21,10 +21,10 @@ animations = [{
 size = Vector2(22, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
-size = Vector2(22.5, 559.6667)
+size = Vector2(29.25, 588.3462)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtvoi"]
-size = Vector2(23, 38)
+size = Vector2(29, 45)
 
 [node name="Player" type="CharacterBody2D" unique_id=1811052657]
 script = ExtResource("1_kyqiw")
@@ -41,6 +41,9 @@ shape = SubResource("RectangleShape2D_lett3")
 [node name="rotation point" type="Node2D" parent="." unique_id=682767236]
 scale = Vector2(1, 0.15234375)
 script = ExtResource("3_gntrk")
+
+[node name="Invincibility" type="Timer" parent="rotation point" unique_id=1860079762]
+one_shot = true
 
 [node name="Timer" type="Timer" parent="rotation point" unique_id=1199623820]
 wait_time = 834.953
@@ -60,15 +63,27 @@ scale = Vector2(1, 6.5641026)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rotation point/Area2D" unique_id=1072092124]
-position = Vector2(122, 275.69232)
+position = Vector2(125.375, 290.03207)
 shape = SubResource("RectangleShape2D_4ocjq")
 
+[node name="cooldown" type="Timer" parent="rotation point" unique_id=140859716]
+wait_time = 0.25
+one_shot = true
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1394241135]
+collision_layer = 4
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1201093142]
-position = Vector2(-0.5, -1)
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_gtvoi")
 
+[node name="Hit" type="Timer" parent="." unique_id=1191523020]
+
 [connection signal="my_signal" from="rotation point" to="." method="_on_rotation_point_my_signal"]
+[connection signal="timeout" from="rotation point/Invincibility" to="rotation point" method="_on_invincibility_timeout"]
 [connection signal="timeout" from="rotation point/Timer" to="rotation point" method="_on_timer_timeout"]
+[connection signal="timeout" from="rotation point/cooldown" to="rotation point" method="_on_cooldown_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Hit" to="." method="_on_hit_timeout"]

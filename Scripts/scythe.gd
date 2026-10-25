@@ -5,6 +5,8 @@ var swung = false
 var mouseangle = 0
 var counter = 0 
 var mousepos = Vector2(0,0)
+@onready var player = get_node("/root/Garden/Player")
+var oncooldown = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_just_pressed('swing') and !swung):
+	if (Input.is_action_just_pressed('swing') and !swung and !oncooldown):
 		Global.startpos = $playerpivot.position
 		$Area2D.monitorable = true
 		mouseangle = get_angle_to(get_global_mouse_position())
@@ -20,7 +22,10 @@ func _process(delta):
 		if abs(rad_to_deg(mouseangle)) < 60:
 			mouseangle = deg_to_rad(60) * (-1 if mouseangle < 0 else 1)
 		swung = true
+		player.invincible = true
+		$Invincibility.start()
 		$Timer.start()
+		
 		
 		
 	if (swung and counter < 16):
@@ -35,6 +40,16 @@ func _process(delta):
 
 
 func _on_timer_timeout() -> void:
+	oncooldown = true
+	$cooldown.start()
 	swung = false
 	counter=0
 	$Area2D.monitorable = false
+
+
+func _on_invincibility_timeout() -> void:
+	player.invincible = false
+
+
+func _on_cooldown_timeout() -> void:
+	oncooldown = false

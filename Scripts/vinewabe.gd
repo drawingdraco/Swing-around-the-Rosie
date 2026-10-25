@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+var move = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -8,10 +8,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#moves straight down towards the player
-	velocity = Vector2(0,1) * 400
-	move_and_slide()
+	if (move):
+		#moves straight down towards the player
+		velocity = Vector2(0,1) * 400
+		move_and_slide()
 
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_timer_2_timeout() -> void:
+	move = true
+	$Timer.start()

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://qxjwsc68aova"]
+
+[ext_resource type="Texture2D" uid="uid://d2vjfx8fg6bu6" path="res://Win.svg" id="1_3vusp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lett3"]
+font_size = 475
+
+[node name="Label" type="Label" unique_id=1626540020]
+offset_left = 69.0
+offset_top = -4.0
+offset_right = 1140.3043
+offset_bottom = 644.0
+text = "WIN"
+label_settings = SubResource("LabelSettings_lett3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=522605816]
+position = Vector2(506, 324)
+scale = Vector2(0.9913194, 0.99382716)
+texture = ExtResource("1_3vusp")

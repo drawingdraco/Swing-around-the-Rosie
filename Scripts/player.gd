@@ -13,6 +13,7 @@ var dodge_roll_dir: Vector2 = Vector2.ZERO
 var dodge_roll_timer: float = 0.0
 
 var can_take_damage: bool = true
+var invincible = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -60,3 +61,18 @@ func _on_rotation_point_my_signal() -> void:
 	velocity *= 6
 	velocity/=16
 	dodge_roll(direction_to_pivot)
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(area)
+	if !invincible and area.name != "Boss":
+		Global.phealth -= 1
+		print("health ", Global.phealth)
+		invincible = true
+		$Hit.start()
+		if Global.phealth<=0:
+			get_tree().change_scene_to_file("res://Scenes/loose.tscn")
+
+
+func _on_hit_timeout() -> void:
+	invincible = false
