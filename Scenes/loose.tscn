@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://blt6j6x2wh7ud"]
 
 [ext_resource type="Texture2D" uid="uid://cg6bv8carctvp" path="res://loose.svg" id="1_n03xj"]
+[ext_resource type="Texture2D" uid="uid://r3uv4tabe4nv" path="res://retry.svg" id="2_o87ns"]
+[ext_resource type="Script" uid="uid://b5ydg7e4y2ioq" path="res://Scripts/button.gd" id="3_o87ns"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lett3"]
 font_size = 387
@@ -17,3 +19,16 @@ label_settings = SubResource("LabelSettings_lett3")
 position = Vector2(556, 323.5)
 scale = Vector2(1.0104166, 1.0262346)
 texture = ExtResource("1_n03xj")
+
+[node name="Button" type="Button" parent="." unique_id=1438893535]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 516.0
+offset_right = 731.8043
+offset_bottom = 645.0
+icon = ExtResource("2_o87ns")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_o87ns")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

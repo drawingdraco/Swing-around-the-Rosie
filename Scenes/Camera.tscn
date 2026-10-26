@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bw7dnw8a5mfs4"]
+
+[ext_resource type="Script" uid="uid://brllkaswxacfy" path="res://Scripts/camera_2d.gd" id="1_iu14u"]
+[ext_resource type="Texture2D" uid="uid://cuh35xpmiik3v" path="res://bar.svg" id="2_uey14"]
+[ext_resource type="Script" uid="uid://bqb2i44pp2pkb" path="res://Scripts/Healthbar.gd" id="3_8kc7d"]
+[ext_resource type="Texture2D" uid="uid://0qbo60qnpkdc" path="res://healthbar.svg" id="4_s75lh"]
+[ext_resource type="Script" uid="uid://4gafh123w1f8" path="res://Scenes/rich_text_label.gd" id="5_w6sx2"]
+[ext_resource type="Texture2D" uid="uid://c8pljj0hvitly" path="res://warning.svg" id="6_wn0uo"]
+
+[node name="Camera2D" type="Camera2D" unique_id=1919743596 node_paths=PackedStringArray("target")]
+limit_enabled = false
+limit_left = -1656
+limit_top = -806
+limit_right = 1205
+limit_bottom = 769
+script = ExtResource("1_iu14u")
+target = NodePath("")
+speed = 2.09
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=971910204]
+offset_left = -423.0
+offset_top = 235.0
+offset_right = 429.0
+offset_bottom = 296.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_uey14")
+script = ExtResource("3_8kc7d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=463745706]
+position = Vector2(4.9999695, 259)
+scale = Vector2(1.7683396, 1.6969696)
+texture = ExtResource("4_s75lh")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=275809241]
+position = Vector2(-861.445, -425)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1870252999]
+offset_left = -576.0
+offset_top = -323.0
+offset_right = -146.0
+offset_bottom = -234.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/outline_size = 31
+theme_override_font_sizes/normal_font_size = 57
+text = "health :"
+script = ExtResource("5_w6sx2")
+
+[node name="Warning" type="Sprite2D" parent="." unique_id=494560546]
+visible = false
+position = Vector2(140, -264)
+scale = Vector2(2.3999999, 2.4)
+texture = ExtResource("6_wn0uo")

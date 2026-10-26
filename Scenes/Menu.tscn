@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bri55lct8bokt"]
+
+[ext_resource type="Texture2D" uid="uid://cwj45jqyhsxbc" path="res://Title.png" id="1_3kf3n"]
+[ext_resource type="Script" uid="uid://cbh4bdnkwm634" path="res://Scripts/menu.gd" id="1_6pedr"]
+
+[node name="Node" type="Node" unique_id=669816774]
+script = ExtResource("1_6pedr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=598507181]
+position = Vector2(575, 325)
+scale = Vector2(1.64, 1.2931727)
+texture = ExtResource("1_3kf3n")
+
+[node name="Button" type="Button" parent="." unique_id=340410125]
+offset_left = 57.0
+offset_top = 479.0
+offset_right = 347.0
+offset_bottom = 623.0
+theme_override_font_sizes/font_size = 91
+text = "Play"
+
+[node name="Button2" type="Button" parent="." unique_id=1547311127]
+offset_left = 435.0
+offset_top = 480.0
+offset_right = 725.0
+offset_bottom = 624.0
+theme_override_font_sizes/font_size = 91
+text = "Extras"
+
+[node name="Button3" type="Button" parent="." unique_id=1074497331]
+offset_left = 798.0
+offset_top = 483.0
+offset_right = 1088.0
+offset_bottom = 627.0
+theme_override_font_sizes/font_size = 91
+text = "Quit"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]

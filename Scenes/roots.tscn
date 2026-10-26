@@ -29,6 +29,7 @@ size = Vector2(852, 429)
 [node name="Area2D" type="Area2D" unique_id=634275517]
 collision_layer = 4
 collision_mask = 4
+monitorable = false
 script = ExtResource("1_aa2mp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465974254]

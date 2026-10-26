@@ -5,16 +5,32 @@ var vinewave = preload("res://Scenes/Vinewabe.tscn")
 var rootssc = preload("res://Scenes/roots.tscn")
 var puffsc = preload("res://Scenes/Pollen puff.tscn")
 @onready var main = get_node("/root/Garden/Sprite2D2")
-@onready var seed = get_node("/root/Garden/Boss/Path2D/PathFollow2D/Seed")
+@onready var Warning = get_node("/root/Garden/Boss/Path2D/PathFollow2D/Warning")
 # Called when the node enters the scene tree for the first time.
 @export var progress: float = 0.0
 func _ready() -> void:
 	get_parent().animation = "default"
-	seed.visible = false
+	Warning.visible = false
+	Global.health = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	progress += .01
+	$"/root/Garden/Boss/Path2D/PathFollow2D".progress_ratio = progress
+	Warning.position = ($"/root/Garden/Boss/Path2D/PathFollow2D".position)/4
+	Warning.rotation = 0
+	if Input.is_action_just_pressed('debug_1'):
+		Warning.visible = true
+		$"Warning timer".start()
+	elif Input.is_action_just_pressed('debug_2'):
+		$Timer2.start()
+	elif Input.is_action_just_pressed('debug_3'):
+		$Timer3.start()
+	elif Input.is_action_just_pressed('debug_4'):
+		$Timer4.start()
+	elif Input.is_action_just_pressed('debug_5'):
+		get_parent().animation = "puffing"
+		$Timer5.start()
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -26,9 +42,8 @@ func _on_attack_timeout() -> void:
 	var rand = randi_range(1,5)
 	print(rand)
 	if rand == 1:
-		seed.visible = true
-		$Timer.start()
-		$Timer/Length.start()
+		Warning.visible = true
+		$"Warning timer".start()
 	elif rand == 2:
 		$Timer2.start()
 	elif rand == 3:
@@ -41,10 +56,8 @@ func _on_attack_timeout() -> void:
 func _on_timer_timeout() -> void:
 	var projectile = projectsc.instantiate()
 	projectile.position = global_position
-	progress += .01
-	$"/root/Garden/Boss/Path2D/PathFollow2D".progress_ratio = progress
 	main.add_sibling(projectile)
-	seed.visible = false
+	
 
 
 func _on_timer_2_timeout() -> void:
@@ -87,3 +100,9 @@ func _on_timer_5_timeout() -> void:
 
 func _on_length_timeout() -> void:
 	$Timer.stop()
+
+
+func _on_warning_timer_timeout() -> void:
+	$Timer.start()
+	$Timer/Length.start()
+	Warning.visible = false

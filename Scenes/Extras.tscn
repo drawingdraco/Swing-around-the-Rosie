@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bo7fq6v4otis1"]
+
+[ext_resource type="Script" uid="uid://c4tg8kwuia3us" path="res://Scripts/extras.gd" id="1_5xmmr"]
+
+[node name="Node" type="Node" unique_id=577006156]
+script = ExtResource("1_5xmmr")
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=1522832622]
+offset_left = 40.0
+offset_top = 17.0
+offset_right = 208.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+text = "beyblade mode"
+
+[node name="CheckButton2" type="CheckButton" parent="." unique_id=1678332835]
+offset_left = 38.0
+offset_top = 62.0
+offset_right = 206.0
+offset_bottom = 93.0
+scale = Vector2(2, 2)
+text = "one hit"
+
+[node name="CheckButton3" type="CheckButton" parent="." unique_id=376834979]
+offset_left = 36.0
+offset_top = 100.0
+offset_right = 204.0
+offset_bottom = 131.0
+scale = Vector2(2, 2)
+text = "strong mode"
+
+[node name="CheckButton4" type="CheckButton" parent="." unique_id=258319942]
+offset_left = 36.0
+offset_top = 150.0
+offset_right = 216.0
+offset_bottom = 181.0
+scale = Vector2(2, 2)
+button_pressed = true
+text = "angle threshhold"
+
+[node name="CheckButton5" type="CheckButton" parent="." unique_id=1769154806]
+offset_left = 32.0
+offset_top = 202.0
+offset_right = 227.0
+offset_bottom = 233.0
+scale = Vector2(2, 2)
+text = "double invincibility"
+
+[node name="CheckButton6" type="CheckButton" parent="." unique_id=577995302]
+offset_left = 31.0
+offset_top = 252.0
+offset_right = 233.0
+offset_bottom = 283.0
+scale = Vector2(2, 2)
+text = "no scythe cooldown"
+
+[node name="CheckButton7" type="CheckButton" parent="." unique_id=1840082869]
+offset_left = 31.0
+offset_top = 303.0
+offset_right = 205.0
+offset_bottom = 334.0
+scale = Vector2(2, 2)
+text = "invincible dodge"
+
+[node name="Button" type="Button" parent="." unique_id=987698246]
+offset_left = 923.0
+offset_top = 538.0
+offset_right = 1122.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 62
+text = "Back"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="CheckButton2" to="." method="_on_check_button_2_toggled"]
+[connection signal="toggled" from="CheckButton3" to="." method="_on_check_button_3_toggled"]
+[connection signal="toggled" from="CheckButton4" to="." method="_on_check_button_4_toggled"]
+[connection signal="toggled" from="CheckButton5" to="." method="_on_check_button_5_toggled"]
+[connection signal="toggled" from="CheckButton6" to="." method="_on_check_button_6_toggled"]
+[connection signal="toggled" from="CheckButton7" to="." method="_on_check_button_7_toggled"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

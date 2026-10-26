@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dp0xbi3mwpaxe"]
+
+[ext_resource type="PackedScene" uid="uid://crmlnb802hiih" path="res://Scenes/Player.tscn" id="1_feyax"]
+[ext_resource type="Script" uid="uid://800vwncwi6ae" path="res://Scripts/Tutorial.gd" id="1_p8jf4"]
+[ext_resource type="Script" uid="uid://brllkaswxacfy" path="res://Scripts/camera_2d.gd" id="3_omtrn"]
+[ext_resource type="PackedScene" uid="uid://dw6ytj25f2iwm" path="res://Scenes/Tutorialvines.tscn" id="4_i6t4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lett3"]
+size = Vector2(109, 669.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ocjq"]
+size = Vector2(130.5, 646)
+
+[node name="Tutorial" type="Node" unique_id=1475919544]
+script = ExtResource("1_p8jf4")
+
+[node name="Player" parent="." unique_id=1811052657 instance=ExtResource("1_feyax")]
+position = Vector2(-508, 111)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=991490545 node_paths=PackedStringArray("target")]
+script = ExtResource("3_omtrn")
+target = NodePath("../Player")
+
+[node name="CharacterBody2D" parent="." unique_id=223426841 instance=ExtResource("4_i6t4g")]
+position = Vector2(-227, 17)
+rotation = 1.5707964
+
+[node name="Area2D" type="Area2D" parent="." unique_id=689991265]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1909837752]
+position = Vector2(588.5, 7.75)
+shape = SubResource("RectangleShape2D_lett3")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=42251828]
+collision_layer = 4
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=926656167]
+position = Vector2(-646.75, 1)
+shape = SubResource("RectangleShape2D_4ocjq")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

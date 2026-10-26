@@ -8,15 +8,19 @@ var screen_size # Size of the game window.
 var mousepos = Vector2(0,0)
 const DODGE_SPEED: float = 900.0
 const DODGE_DURATION: float = 0.3
-
+#test
 var dodge_roll_dir: Vector2 = Vector2.ZERO
 var dodge_roll_timer: float = 0.0
-
+var test = "test"
 var can_take_damage: bool = true
 var invincible = false
-
+var trueInvincibility = false
 func _ready():
 	screen_size = get_viewport_rect().size
+	Global.phealth = 3
+	if Global.onehit:
+		Global.phealth = 1
+	
 
 func _physics_process(delta: float) -> void:
 	if dodge_roll_timer > 0.0:
@@ -24,6 +28,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		_movement(delta)
 	move_and_slide()
+	if Input.is_action_just_pressed('debug_6'):
+		trueInvincibility = true
+		print("true invincibility on")
 	
 func _movement (delta: float) -> void:
 	var input_vector = Vector2(
@@ -38,6 +45,9 @@ func _movement (delta: float) -> void:
 			dodge_roll(input_vector)
 		elif velocity.length() > 0.1:
 			dodge_roll(velocity.normalized())
+		if Global.invincibledodge:
+			invincible = true
+			$Hit.start()
 
 func dodge_roll(direction: Vector2) -> void:
 	dodge_roll_dir = direction
@@ -65,7 +75,9 @@ func _on_rotation_point_my_signal() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area)
-	if !invincible and area.name != "Boss":
+	if get_tree().get_current_scene().name != "Garden" and !invincible and !trueInvincibility:
+		get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
+	if !invincible and area.name != "Boss" and !trueInvincibility:
 		Global.phealth -= 1
 		print("health ", Global.phealth)
 		invincible = true

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ccodru2stjc2" path="res://flower.svg" id="1_wwfse"]
 [ext_resource type="Texture2D" uid="uid://btrhoqys6ovbl" path="res://puffing.svg" id="2_cxrok"]
 [ext_resource type="Script" uid="uid://dj2oydp5yewh" path="res://Scripts/Boss.gd" id="2_wwfse"]
-[ext_resource type="Texture2D" uid="uid://chi6hrjvfouku" path="res://Seed.svg" id="4_ukjjc"]
+[ext_resource type="Texture2D" uid="uid://6y8gkungrj3y" path="res://warningsign.svg" id="4_ukjjc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_djkty"]
 animations = [{
@@ -50,7 +50,7 @@ progress = 23.305
 one_shot = true
 
 [node name="Timer" type="Timer" parent="Boss" unique_id=513925323]
-wait_time = 0.007
+wait_time = 0.009999999999999998
 
 [node name="Length" type="Timer" parent="Boss/Timer" unique_id=1051750372]
 wait_time = 3.0
@@ -69,6 +69,10 @@ one_shot = true
 position = Vector2(0.35000154, 3.1500003)
 shape = SubResource("RectangleShape2D_lett3")
 
+[node name="Warning timer" type="Timer" parent="Boss" unique_id=1719265671]
+wait_time = 0.5
+one_shot = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=787765958]
 position = Vector2(0.1787777, -4.055549)
 
@@ -85,10 +89,10 @@ curve = SubResource("Curve2D_wwfse")
 position = Vector2(124.86318, 0.32248878)
 rotation = -1.927902
 
-[node name="Seed" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=945076970]
-position = Vector2(-0.36856556, -4.4407916)
+[node name="Warning" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=945076970]
+position = Vector2(-1.9285122, -0.1548729)
 rotation = 1.9198622
-scale = Vector2(1.1077223, 1.4086996)
+scale = Vector2(1.6778446, 1.4086996)
 texture = ExtResource("4_ukjjc")
 
 [node name="attack" type="Timer" parent="." unique_id=1249362346]
@@ -102,4 +106,5 @@ autostart = true
 [connection signal="timeout" from="Boss/Timer3" to="Boss" method="_on_timer_3_timeout"]
 [connection signal="timeout" from="Boss/Timer4" to="Boss" method="_on_timer_4_timeout"]
 [connection signal="timeout" from="Boss/Timer5" to="Boss" method="_on_timer_5_timeout"]
+[connection signal="timeout" from="Boss/Warning timer" to="Boss" method="_on_warning_timer_timeout"]
 [connection signal="timeout" from="attack" to="Boss" method="_on_attack_timeout"]

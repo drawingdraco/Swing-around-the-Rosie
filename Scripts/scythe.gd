@@ -7,19 +7,37 @@ var counter = 0
 var mousepos = Vector2(0,0)
 @onready var player = get_node("/root/Garden/Player")
 var oncooldown = false
+var beyblade = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	var sceneName = get_tree().get_current_scene().name
+	player = get_node("/root/" + sceneName + "/Player")
+	if Global.doubleinvincibility:
+		$Invincibility.wait_time *= 2
+	if Global.nocooldown:
+		$cooldown.wait_time = 0
+	if Global.beyblade:
+		Global.beyblade = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_just_pressed('swing') and !swung and !oncooldown):
+	if (Input.is_action_just_pressed('Beyblade')):
+		Global.beyblade = true
+		print("beyblade")
+	if (Global.beyblade):
+		Global.startpos = $playerpivot.position
+		$Area2D.monitorable = true
+		mouseangle = 60
+		rotate(mouseangle / 16)
+		#my_signal.emit()
+		player.invincible = true	
+		if (Input.is_action_just_pressed('stop')):
+			Global.beyblade = false
+	if (Input.is_action_just_pressed('swing') and !swung and !oncooldown) or (Input.is_action_just_pressed('swing') and Global.nocooldown):
 		Global.startpos = $playerpivot.position
 		$Area2D.monitorable = true
 		mouseangle = get_angle_to(get_global_mouse_position())
 		print(mouseangle)
-		if abs(rad_to_deg(mouseangle)) < 60:
+		if abs(rad_to_deg(mouseangle)) < 60 and Global.anglethreshold:
 			mouseangle = deg_to_rad(60) * (-1 if mouseangle < 0 else 1)
 		swung = true
 		player.invincible = true
@@ -32,7 +50,8 @@ func _process(delta):
 		counter += 1
 		rotate(mouseangle / 16)
 		if counter >=8:
-			my_signal.emit()
+			if !Global.strongman:
+				my_signal.emit()
 	if(counter >= 16):
 		$Timer.stop()
 		$Timer.timeout.emit()
