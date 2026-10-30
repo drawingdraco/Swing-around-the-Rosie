@@ -10,7 +10,11 @@ size = Vector2(1720, 60)
 size = Vector2(1721, 59)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=223426841]
+position = Vector2(-1, 7.0000305)
+rotation = 1.5707964
+scale = Vector2(1.013231, 1.0754108)
 script = ExtResource("1_goqr7")
+rotate = 45
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2075283175]
 position = Vector2(-12.500022, 9)

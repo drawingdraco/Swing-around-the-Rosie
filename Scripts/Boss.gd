@@ -68,8 +68,16 @@ func _on_timer_2_timeout() -> void:
 
 func _on_timer_3_timeout() -> void:
 	var wave = vinewave.instantiate()
+	var rand = randi_range(1,4)
 	wave.position = global_position
-	wave.position.y -= 620
+	if rand == 1:
+		wave.position.y -= 420
+	elif rand == 2:
+		wave.position.y += 420
+	elif rand == 3:
+		wave.position.x -= 870
+	elif rand == 4:
+		wave.position.x += 870
 	main.add_sibling(wave)
 
 

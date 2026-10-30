@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Swing arround the Rossie"
-run/main_scene="uid://bw5k8fptbns23"
+run/main_scene="uid://dp0xbi3mwpaxe"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

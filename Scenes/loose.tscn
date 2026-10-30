@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://blt6j6x2wh7ud"]
 
 [ext_resource type="Texture2D" uid="uid://cg6bv8carctvp" path="res://loose.svg" id="1_n03xj"]
+[ext_resource type="Script" uid="uid://bhts862klwxd3" path="res://Scripts/loose.gd" id="1_o87ns"]
 [ext_resource type="Texture2D" uid="uid://r3uv4tabe4nv" path="res://retry.svg" id="2_o87ns"]
-[ext_resource type="Script" uid="uid://b5ydg7e4y2ioq" path="res://Scripts/button.gd" id="3_o87ns"]
+[ext_resource type="Texture2D" uid="uid://bfw4plqx2lado" path="res://menu.svg" id="4_o2uo7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lett3"]
 font_size = 387
@@ -14,6 +15,7 @@ offset_right = 1169.0
 offset_bottom = 525.0
 text = "loose"
 label_settings = SubResource("LabelSettings_lett3")
+script = ExtResource("1_o87ns")
 
 [node name="Loose" type="Sprite2D" parent="." unique_id=1053856002]
 position = Vector2(556, 323.5)
@@ -22,13 +24,24 @@ texture = ExtResource("1_n03xj")
 
 [node name="Button" type="Button" parent="." unique_id=1438893535]
 layout_mode = 0
-offset_left = 342.0
-offset_top = 516.0
-offset_right = 731.8043
-offset_bottom = 645.0
+offset_left = 164.0
+offset_top = 511.0
+offset_right = 553.8043
+offset_bottom = 640.0
 icon = ExtResource("2_o87ns")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("3_o87ns")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[node name="Button2" type="Button" parent="." unique_id=708068854]
+layout_mode = 0
+offset_left = 633.0
+offset_top = 515.0
+offset_right = 1022.8043
+offset_bottom = 644.0
+theme_override_font_sizes/font_size = 90
+icon = ExtResource("4_o2uo7")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

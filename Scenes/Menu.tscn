@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cwj45jqyhsxbc" path="res://Title.png" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://cbh4bdnkwm634" path="res://Scripts/menu.gd" id="1_6pedr"]
+[ext_resource type="Texture2D" uid="uid://dxv2xl5wr6l0f" path="res://play.svg" id="3_ma218"]
+[ext_resource type="Texture2D" uid="uid://bc8w1owo1htok" path="res://extras.svg" id="4_idohh"]
+[ext_resource type="Texture2D" uid="uid://dpufi5flt0lq1" path="res://quit.svg" id="5_wfhf6"]
 
 [node name="Node" type="Node" unique_id=669816774]
 script = ExtResource("1_6pedr")
@@ -12,28 +15,37 @@ scale = Vector2(1.64, 1.2931727)
 texture = ExtResource("1_3kf3n")
 
 [node name="Button" type="Button" parent="." unique_id=340410125]
-offset_left = 57.0
-offset_top = 479.0
-offset_right = 347.0
-offset_bottom = 623.0
+offset_left = 56.0
+offset_top = 466.0
+offset_right = 362.0
+offset_bottom = 643.0
 theme_override_font_sizes/font_size = 91
-text = "Play"
+icon = ExtResource("3_ma218")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button2" type="Button" parent="." unique_id=1547311127]
-offset_left = 435.0
-offset_top = 480.0
-offset_right = 725.0
-offset_bottom = 624.0
+offset_left = 382.0
+offset_top = 453.0
+offset_right = 753.0
+offset_bottom = 657.0
 theme_override_font_sizes/font_size = 91
-text = "Extras"
+icon = ExtResource("4_idohh")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button3" type="Button" parent="." unique_id=1074497331]
-offset_left = 798.0
-offset_top = 483.0
-offset_right = 1088.0
-offset_bottom = 627.0
+offset_left = 785.0
+offset_top = 461.0
+offset_right = 1124.0
+offset_bottom = 652.0
 theme_override_font_sizes/font_size = 91
-text = "Quit"
+icon = ExtResource("5_wfhf6")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

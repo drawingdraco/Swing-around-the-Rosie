@@ -59,14 +59,18 @@ position = Vector2(4.9999695, 259)
 scale = Vector2(1.7683396, 1.6969696)
 texture = ExtResource("9_ytob4")
 
+[node name="Marker2D" type="Marker2D" parent="Camera2D/Sprite2D" unique_id=1782009513]
+position = Vector2(-494.81445, -404.25)
+
 [node name="Marker2D" type="Marker2D" parent="Camera2D" unique_id=1163781252]
-position = Vector2(-861.445, -425)
+position = Vector2(-870, -423)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D" unique_id=652552211]
 offset_left = -576.0
 offset_top = -323.0
 offset_right = -146.0
 offset_bottom = -234.0
+scale = Vector2(1, 1.0342182)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_constants/outline_size = 31
@@ -74,8 +78,29 @@ theme_override_font_sizes/normal_font_size = 57
 text = "health :"
 script = ExtResource("10_ve2dw")
 
-[node name="Warning" type="Sprite2D" parent="Camera2D" unique_id=21762361]
+[node name="Warningtop" type="Sprite2D" parent="Camera2D" unique_id=21762361]
 visible = false
 position = Vector2(140, -264)
+scale = Vector2(2.3999999, 2.4)
+texture = ExtResource("11_ve2dw")
+
+[node name="Warningleft" type="Sprite2D" parent="Camera2D" unique_id=1641219423]
+visible = false
+position = Vector2(-520, 36)
+rotation = -1.5742155
+scale = Vector2(1.5788019, 1.5227349)
+texture = ExtResource("11_ve2dw")
+
+[node name="Warningright" type="Sprite2D" parent="Camera2D" unique_id=1181823885]
+visible = false
+position = Vector2(538.0001, 33)
+rotation = 1.5707964
+scale = Vector2(1.5788019, 1.5227349)
+texture = ExtResource("11_ve2dw")
+
+[node name="Warningbottom" type="Sprite2D" parent="Camera2D" unique_id=1245117655]
+visible = false
+position = Vector2(24.000015, 276)
+rotation = 3.1415927
 scale = Vector2(2.3999999, 2.4)
 texture = ExtResource("11_ve2dw")
